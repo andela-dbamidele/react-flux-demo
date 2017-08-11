@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   const ref = Firebase.database().ref().child('messages');
-  ref.once('value', (snap) => {
+  ref.on('value', (snap) => {
     const dataFromDb = snap.val();
     const processedData = [];
     for (const data in dataFromDb) {
@@ -37,7 +37,12 @@ router.post('/', (req, res) => {
       });
     }
     return res.status(200).send({
-      message: 'Message added successfully'
+      status: 'Message added successfully',
+      message: {
+        title,
+        user,
+        date
+      }
     });
   });
 });

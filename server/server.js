@@ -32,10 +32,10 @@ app.use(bodyParser.json());
 app.use('/messages', messages);
 
 app.get('/*', (req, res) => {
-  res.send({
-    status: 200
-  });
-  // res.sendFile(path.join(__dirname, 'index.html'));
+  // res.send({
+  //   status: 200
+  // });
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(port, () => {
